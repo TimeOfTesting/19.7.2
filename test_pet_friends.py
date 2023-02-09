@@ -54,7 +54,7 @@ def test_successful_delete_self_pet_id(pet_id='584879ec-00ca-43f2-ab6e-e003f61e6
 
 def test_unsuccessful_add_new_pet_photo(name='', animal_type='Кошка',
                                      age='ыфафыаыф', pet_photo='cat1.jpg'):
-    """Проверерка добавления питомца с некорректными данными, запрос возвращает статус 400"""
+    """Проверка добавления питомца с некорректными данными, запрос возвращает статус 400"""
 
     pet_photo = os.path.join(os.path.dirname(__file__), pet_photo)
     _, auth_key = pf.get_api_key(valid_email, valid_password)
@@ -104,7 +104,7 @@ def test_unsuccessful_add_new_pet_without_photo(name='Маша', animal_type='К
         assert result['name'] == name
 
 def test_unsuccessful_update_info_pet(name='Пышка',pet_id='0', animal_type='Белка', age=0):
-    """Проверка невозможности отбновления информации о питомце при вводе не существующего ID"""
+    """Проверка невозможности обновления информации о питомце при вводе не существующего ID"""
     _, auth_key = pf.get_api_key(valid_email, valid_password)
     status, result = pf.update_pet_info(auth_key, pet_id, name, animal_type, age)
     assert status == 400
